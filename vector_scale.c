@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 
 #define VECTOR_LENGTH 3
 
@@ -9,10 +9,14 @@
 
     recall that in C uses "call by value", but arrays (vectors)
     are passed by reference (really pointers under the covers)
-    allowing the array arguments to modified by a function
+    allowing the array arguments to modified by a function  
     */
 void scale_vector(double a[], double b[], double scale)
 {
+    int i;
+    for (i = 0; i < VECTOR_LENGTH; i++) {
+        b[i] = scale * a[i];
+    }
 }
 
 /* implement a function to display a vector to stdout (printf)
@@ -20,6 +24,11 @@ void scale_vector(double a[], double b[], double scale)
     */
 void display_vector(double a[])
 {
+    int i;
+    for (i = 0; i < VECTOR_LENGTH; i++) {
+        printf("%6.3f", a[i]);
+    }
+    printf("\n");
 }
 
 int main(int argc, char **argv)
@@ -27,27 +36,21 @@ int main(int argc, char **argv)
     double x[VECTOR_LENGTH];
     double y[VECTOR_LENGTH];
     double scale = 2.0;
-    int i;
 
     x[0] = 1.0;
     x[1] = 2.0;
     x[2] = 3.0;
 
     printf("vector x:");
-    for(i=0; i < VECTOR_LENGTH; i++) {
-        printf("%6.3f", x[i]);
-    }
-    printf("\n");
+    display_vector(x);
 
     printf("scaled by %f is:\n", scale);
 
     scale_vector(x, y, scale);
+    display_vector(y);
 
     printf("vector y:");
-    for(i=0; i < VECTOR_LENGTH; i++) {
-        printf("%6.3f", y[i]);
-    }
-    printf("\n");
+    display_vector(y);
 
     return 0;
 }
