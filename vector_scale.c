@@ -47,7 +47,6 @@ int main(int argc, char **argv)
     printf("scaled by %f is:\n", scale);
 
     scale_vector(x, y, scale);
-    display_vector(y);
 
     printf("vector y:");
     display_vector(y);
