@@ -6,7 +6,7 @@
 
 double quadratic(double a, double b, double c, double x)
 {
-	return a * x * x + b + x + c;
+	return a * x * x + b * x + c;
 }
 
 int main(int argc, char* argv[])
