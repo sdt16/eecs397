@@ -57,7 +57,12 @@ uint16_t remove_member(uint16_t set, enum fruits member)
 
 int main(int argc, char* argv[])
 {
-	uint16_t citrus_set = ~EMPTY_SET;
+	uint16_t citrus_set = 0;
+	citrus_set = add_member(citrus_set, LEMON);
+	citrus_set = add_member(citrus_set, LIME);
+	citrus_set = add_member(citrus_set, ORANGE);
+	citrus_set = add_member(citrus_set, GRAPEFRUIT);
+	citrus_set = add_member(citrus_set, TANGERINE);
 	printf("Set representing all citrus fruits: %#x\n", citrus_set);
 
 	uint16_t response_1;
@@ -84,4 +89,5 @@ int main(int argc, char* argv[])
 	} else {
 		printf("No one likes Grapes!\n");
 	}
+	return 0;
 }
