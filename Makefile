@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Werror --std=c99
+CFLAGS = -Wall -Werror -std=gnu99
 
 matrix: matrix.o matrix_lib.o
 	gcc -o matrix matrix.o matrix_lib.o
