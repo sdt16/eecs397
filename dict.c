@@ -15,7 +15,7 @@ void init_dict(dict_t *d)
 int add_kv(dict_t *d, const char *key, const char *value)
 {
   for (int i = 0; i < MAX_ENTRIES; i++) {
-    if (strlen(d->entries[i].key) == 0) {
+    if (strlen(d->entries[i].key) == 0 || strcmp(d->entries[i].key, key) == 0) {
       strcpy(d->entries[i].key, key);
       strcpy(d->entries[i].value, value);
       return 1;
