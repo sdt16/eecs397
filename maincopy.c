@@ -11,9 +11,10 @@ int main(int argc, char* argv[])
     exit(1);
   }
 
-  char* filename = __FILE__;
+  char filename[50];
+  strcpy(filename, __FILE__);
   char* ext_loc = strstr(filename, ".c");
-  ext_loc[0] = '\0';
+  *ext_loc = '\0';
   char buf[50];
   snprintf(buf, sizeof(buf), "%sN%s", filename, ".c");
 
