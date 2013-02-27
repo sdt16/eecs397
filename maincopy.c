@@ -11,10 +11,11 @@ int main(int argc, char* argv[])
     exit(1);
   }
 
-  char* ext_loc = strstr(__FILE__, ".c");
+  char* filename = __FILE__;
+  char* ext_loc = strstr(filename, ".c");
   ext_loc[0] = '\0';
   char buf[50];
-  snprintf(buf, sizeof(buf), "%sN%s", ext_loc, ".c");
+  snprintf(buf, sizeof(buf), "%sN%s", filename, ".c");
 
   FILE* new_file = fopen(buf, "w");
   if (new_file == NULL) {
