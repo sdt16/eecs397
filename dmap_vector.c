@@ -4,11 +4,9 @@
 void double_vector_display(double *d, int length)
 {
   if (length > 0) {
-    printf("%f", d[0]);
-    for (int i = 1; i < length; i++) {
-      printf(" %f", d[i]);
+    for (int i = 0; i < length; i++) {
+      printf("%f\n", d[i]);
     }
-    printf("\n");
   }
 }
 
