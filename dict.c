@@ -54,6 +54,8 @@ void remove_kv(dict_t *d, const char *key)
     if (strcmp(d->entries[i].key, key) == 0) {
       free(d->entries[i].key);
       d->entries[i].key = NULL;
+      free(d->entries[i].value);
+      d->entries[i].value = NULL;
       break;
     }
   }

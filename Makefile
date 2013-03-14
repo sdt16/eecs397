@@ -2,6 +2,9 @@ GCCFLAGS = -Wall -Werror -std=gnu99 -g
 
 all: main
 
+memcheck: main
+	valgrind --tool=memcheck --leak-check=yes ./main
+
 main: main.c dict.o
 	gcc $(GCCFLAGS) -o main main.c dict.o
 
