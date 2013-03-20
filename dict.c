@@ -8,8 +8,6 @@
 dict_entry *alloc_dict(void)
 {
   dict_entry* entry = malloc(sizeof(dict_entry));
-  entry->key = calloc(1, sizeof(char));
-  entry->value = calloc(1, sizeof(char));
   INIT_LIST_HEAD(&(entry->list));
   return entry;
 }
