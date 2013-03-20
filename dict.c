@@ -21,7 +21,7 @@ void free_dict(dict_entry *d)
 
   dict_entry *entry;
 
-  list_for_each_safe(cur, n, d->list) {
+  list_for_each_safe(cur, n, &d->list) {
     entry = list_entry(cur, dict_entry, list);
     list_del(cur);
     free(entry->key);
@@ -37,8 +37,8 @@ int add_kv(dict_entry *d,  char *key, char *value)
   struct list_head *list_cur;
   dict_entry *entry;
 
-  list_for_each(list_cur, d->list) {
-    entry = list_entry(list_curr, dict_entry, list);
+  list_for_each(list_cur, &d->list) {
+    entry = list_entry(list_cur, dict_entry, list);
     if (strcmp(entry->key, key) == 0) {
       entry->value = realloc(entry->value, strlen(value)+1);
       strcpy(entry->value, value);
@@ -52,7 +52,7 @@ int add_kv(dict_entry *d,  char *key, char *value)
   strcpy(entry->key, key);
   strcpy(entry->value, value);
 
-  list_add(entry, list_cur);
+  list_add(&entry->list, list_cur);
 
   return 1;
 
@@ -66,7 +66,7 @@ void remove_kv(dict_entry *d,  char *key)
 
   dict_entry *entry;
 
-  list_for_each_safe(cur, n, d->list) {
+  list_for_each_safe(cur, n, &d->list) {
     entry = list_entry(cur, dict_entry, list);
     if (strcmp(entry->key, key) == 0) {
       list_del(cur);
@@ -82,11 +82,11 @@ void remove_kv(dict_entry *d,  char *key)
 
 int lookup_kv(dict_entry *d,  char *key, char *value)
 {
-  struct list_head cur;
+  struct list_head *cur;
 
   dict_entry *entry;
 
-  list_for_each(cur, d->list) {
+  list_for_each(cur, &d->list) {
     entry = list_entry(cur, dict_entry, list);
     if (strcmp(entry->key, key) == 0) { 
       strcpy(value, entry->value);
