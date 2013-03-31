@@ -139,7 +139,7 @@ void print_dict(dict_entry *d)
 
   list_for_each(list_cur, &sorted->list) {
     entry = list_entry(list_cur, dict_entry, list);
-    printf("%s  %d\n", entry->key, *(entry->value));
+    printf("%s %d\n", entry->key, *(entry->value));
   }
 
   free_dict(sorted);
