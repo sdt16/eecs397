@@ -10,7 +10,7 @@ void remove_other_chars(char *string)
   char *read, *write;
  
   for(read = write = string; *read != '\0'; ++read) {
-    if(isalpha(*read) || *read == '-') {
+    if(isalnum(*read) || *read == '-') {
       *(write++) = *read;
     }
   }
